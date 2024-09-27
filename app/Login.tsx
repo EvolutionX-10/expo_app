@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import Input from "../components/Input";
 import Button from "../components/Button";
 import IconButton from "../components/IconButton";
+import { useNavigation } from "@react-navigation/native";
 
 const googleIcon = require("@/assets/images/google.png");
 const facebookIcon = require("@/assets/images/facebook.png");
@@ -11,10 +12,16 @@ const appleIcon = require("@/assets/images/apple.png");
 const LoginScreen: React.FC = () => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
+  const navigation = useNavigation();
 
 	const handleLogin = () => {
 		console.log("Login with", email, password);
 	};
+
+  const handleForgotPassword = () => {
+    // @ts-expect-error
+    navigation.navigate("Forgot");
+  };
 
 	return (
 		<View style={styles.container}>
@@ -24,9 +31,10 @@ const LoginScreen: React.FC = () => {
 			<Input placeholder="Email" value={email} onChangeText={setEmail} />
 			<Input placeholder="Password" value={password} onChangeText={setPassword} secureTextEntry />
 
-			<TouchableOpacity>
+			<TouchableOpacity onPress={handleForgotPassword}>
 				<Text style={styles.forgotPasswordText}>Forgot your password?</Text>
 			</TouchableOpacity>
+
 			<View
 				style={{
 					paddingVertical: 20,
@@ -61,7 +69,7 @@ const styles = StyleSheet.create({
 		fontSize: 24,
 		fontWeight: "bold",
 		marginBottom: 10,
-		color: "#1E3A8A",
+		color: "#1f41bb",
 	},
 	subtitle: {
 		fontSize: 16,
@@ -73,13 +81,13 @@ const styles = StyleSheet.create({
 		marginBottom: 20,
 	},
 	forgotPasswordText: {
-		color: "#1E3A8A",
+		color: "#1f41bb",
 		marginBottom: 30,
 	},
 	signInButton: {
 		width: "100%",
 		// marginBottom: 20,
-		backgroundColor: "#1E3A8A",
+		backgroundColor: "#1f41bb",
 	},
 	createAccountText: {
 		marginBottom: 20,

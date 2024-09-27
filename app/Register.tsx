@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import Input from "../components/Input";
 import Button from "../components/Button";
 import IconButton from "../components/IconButton";
@@ -30,7 +30,14 @@ const RegisterScreen: React.FC = () => {
 			<Input placeholder="Password" value={password} onChangeText={setPassword} secureTextEntry />
 			<Input placeholder="Confirm Password" value={confirmPassword} onChangeText={setConfirmPassword} secureTextEntry />
 
-			<Button title="Sign up" onPress={handleRegister} style={styles.signUpButton} />
+			<View
+				style={{
+					paddingVertical: 20,
+					width: "100%",
+				}}
+			>
+				<Button title="Sign up" onPress={handleRegister} style={styles.signUpButton} />
+			</View>
 
 			<Text style={styles.alreadyAccountText}>Already have an account</Text>
 
@@ -57,7 +64,7 @@ const styles = StyleSheet.create({
 		fontSize: 24,
 		fontWeight: "bold",
 		marginBottom: 10,
-		color: "#1E3A8A",
+		color: "#1f41bb",
 	},
 	subtitle: {
 		fontSize: 16,
@@ -71,8 +78,7 @@ const styles = StyleSheet.create({
 	},
 	signUpButton: {
 		width: "100%",
-		marginBottom: 20,
-		backgroundColor: "#1E3A8A",
+		backgroundColor: "#1f41bb",
 	},
 	alreadyAccountText: {
 		marginBottom: 20,
